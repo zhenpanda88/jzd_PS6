@@ -1,0 +1,15 @@
+roslaunch baxter_gazebo baxter_world.launch
+
+rosrun baxter_tools enable_robot.py -e
+
+rosrun baxter_trajectory_streamer rt_arm_as
+rosrun baxter_trajectory_streamer left_arm_as
+
+rosrun baxter_interface joint_trajectory_action_server.py --mode position
+
+roscd baxter_playfile_nodes
+
+rosrun baxter_tools enable_robot.py -e
+
+rosrun baxter_playfile_nodes baxter_playback pre_pose_right.jsp pre_pose_left.jsp
+
